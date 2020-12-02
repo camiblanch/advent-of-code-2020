@@ -18,7 +18,21 @@ const part1 = () => {
 };
 
 const part2 = () => {
+	loop1:
+		for (let i = 0; i < entries.length; i++) {
+			for (let j = i + 1; j < entries.length; j++) {
+				for (let k = j + 1; k < entries.length; k++) {
+					const entryI = entries[i];
+					const entryJ = entries[j];
+					const entryK = entries[k];
 
-}
+					if (entryI + entryJ + entryK === 2020) {
+						console.log(entryI * entryJ * entryK);
+						break loop1;
+					}
+				}
+			}
+		}
+};
 
 part2();
