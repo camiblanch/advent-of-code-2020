@@ -9,7 +9,6 @@ const validPasswords = passwordEntries.filter(passwordEntry => {
 	const [passwordRule, password] = passwordEntry.split(": ");
 	const [characterRange, character] = passwordRule.split(" ");
 	const [min, max] = characterRange.split("-").map(Number);
-	// {min, max, character, password};
 	const numTimesCharOccurs = password.split("").filter(passwordCharacter => (passwordCharacter === character)).length;
 
 	if (numTimesCharOccurs >= min && numTimesCharOccurs <= max) {
