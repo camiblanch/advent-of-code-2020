@@ -59,7 +59,30 @@ const part1 = () => {
 };
 
 const part2 = () => {
+	const boardingPasses = readFile();
 
+	const seatMap = [];
+
+	const results = boardingPasses.map(pass => {
+		const row = binarySplit(pass.slice(0, 7), 0, rowsOnPlane - 1, "F", "B");
+		const column = binarySplit(pass.slice(7), 0, columnsOnPlane - 1, "L", "R");
+
+		const seat = new Seat(row, column);
+
+		if (seatMap[row] === undefined) {
+			seatMap[row] = [];
+		}
+		seatMap[row][column] = seat;
+		return seat;
+	});
+
+	seatMap.forEach((seatRow, rowIndex) => {
+		for (let column = 0; column < columnsOnPlane; column++) {
+			if (!(seatRow[column])) {
+				console.log(new Seat(rowIndex, column));
+			}
+		}
+	});
 };
 
-part1();
+part2();
